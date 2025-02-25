@@ -5,38 +5,8 @@ import dotenv from 'dotenv'
 import fs from 'fs'
 dotenv.config()
 
-function validateData(schema, data) {
-  const schemaKeys = new Set()
-  const schemaParts = schema.split(',').map((part) => part.trim())
-  for (const schemaPart of schemaParts) {
-    const [type, key] = schemaPart.split(' ')
-    schemaKeys.add(key)
-  }
-
-  let missingKeys = []
-  for (const key of schemaKeys) {
-    if (!data[key]) missingKeys.push(key)
-  }
-
-  if (missingKeys.length > 0) {
-    return `Missing keys: ${missingKeys.join(', ')}`
-  }
-}
-
 function readSchemaFromFile(filePath) {
   return fs.readFileSync(filePath, 'utf8')
-}
-
-function castDataTypes(schema, data) {
-  const schemaParts = schema.split(',').map((part) => part.trim())
-  for (const schemaPart of schemaParts) {
-    const [type, key] = schemaPart.split(' ')
-    if (type === 'int') {
-      data[key] = parseInt(data[key])
-    } else if (type === 'int[]') {
-      data[key] = data[key].map((item) => parseInt(item))
-    }
-  }
 }
 
 function setupServer() {
@@ -72,19 +42,20 @@ function setupServer() {
   server.post('/attest', async (req, res) => {
     const eas = new EAS(providerUrl, privateKey)
 
-    const validationError = validateData(schema, req.body)
-    if (validationError) {
-      res.status(400).send({ error: validationError })
+    const { status, missingKeys } = EAS.validateSchemaData(schema, req.body)
+    if (!status) {
+      res.status(400).send({ error: `Missing keys: ${missingKeys.join(', ')}` })
       return
     }
 
     // Cast data types in-place.
-    castDataTypes(schema, req.body)
+    EAS.castSchemaDataTypes(schema, req.body)
 
     let uid = null
     try {
       uid = await eas.attest(providerUrl, privateKey, schema, schemaUID, req.body)
     } catch (error) {
+      console.error('Error during attestation:', error)
       res.status(500).send({ error: error.message })
       return
     }
