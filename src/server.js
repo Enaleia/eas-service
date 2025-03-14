@@ -24,14 +24,16 @@ function setupServer() {
     process.exit(1)
   }
 
-  const providerUrl = process.env.OP_PROVIDER
-  const privateKey = process.env.PRIVATE_KEY
-  const schemaUID = process.env.SCHEMA_UID
-  const schema = readSchemaFromFile('.schema')
+  // The port the server will listen on.
   const port = process.argv[2] || process.env.PORT || 3000
 
-  const server = express()
+  const providerUrl = process.env.OP_PROVIDER
+  const privateKey = process.env.PRIVATE_KEY
+  const schema = readSchemaFromFile('.schema')
+  const schemaUID = process.env.SCHEMA_UID
 
+  // Create a new Express server and configure it.
+  const server = express()
   server.use(bodyParser.json())
 
   server.get('/ping', (req, res) => {
@@ -40,7 +42,7 @@ function setupServer() {
   })
 
   server.post('/attest', async (req, res) => {
-    const eas = new EAS(providerUrl, privateKey)
+    const eas = new EAS(providerUrl, privateKey, schema, schemaUID)
 
     const { status, missingKeys } = EAS.validateSchemaData(schema, req.body)
     if (!status) {
@@ -53,7 +55,7 @@ function setupServer() {
 
     let uid = null
     try {
-      uid = await eas.attest(providerUrl, privateKey, schema, schemaUID, req.body)
+      uid = await eas.attest(req.body)
     } catch (error) {
       console.error('Error during attestation:', error)
       res.status(500).send({ error: error.message })
