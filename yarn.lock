@@ -1194,6 +1194,11 @@ commander@3.0.2:
   resolved "https://registry.yarnpkg.com/commander/-/commander-3.0.2.tgz#6837c3fb677ad9933d1cfba42dd14d5117d6b39e"
   integrity sha512-Gar0ASD4BDyKC4hl4DwHqDrmvjoxWKZigVnAbn5H1owvm4CxCPdb0HQDehwNYMJpla5+M2tPmPARzhtYuwpHow==
 
+commander@^13.1.0:
+  version "13.1.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-13.1.0.tgz#776167db68c78f38dcce1f9b8d7b8b9a488abf46"
+  integrity sha512-/rFeCpNJQbhSZjGVwO9RFV3xPqbnERS8MmIQzCtD/zl6gpJuV/bMLuN92oG3F7d8oDEHHRrujSXNUr8fpjntKw==
+
 concat-map@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
@@ -1326,14 +1331,15 @@ dunder-proto@^1.0.1:
     es-errors "^1.3.0"
     gopd "^1.2.0"
 
-eas-lib@^0.1.9:
-  version "0.1.9"
-  resolved "https://registry.yarnpkg.com/eas-lib/-/eas-lib-0.1.9.tgz#3e64594e1be7f174f243c9db4e3573121d9f5dfa"
-  integrity sha512-fGvofZhWCxv5WcRxSizx9pgaXXoOF4LH2mUaGbcvOSMw83e8AaHWUMiqCB/PfhC0GzvHZneHsuRZgGi6AFXGjA==
+eas-lib@^0.1.11:
+  version "0.1.11"
+  resolved "https://registry.yarnpkg.com/eas-lib/-/eas-lib-0.1.11.tgz#4557e737e78c6083201386b1ee69b9e485c9e5f5"
+  integrity sha512-nHIUMvyhPdcewZxhEqtts5Ab8Sv4NzrVDzgt7Yb3dAg/qRZUaQUON9CwlFx94BlYB14SwNBFHRxRhDPzBdUKyg==
   dependencies:
     "@ethereum-attestation-service/eas-sdk" "^2.7.0"
     axios "^1.7.7"
     bip39 "^3.1.0"
+    commander "^13.1.0"
     ethers "^6.13.4"
 
 ee-first@1.1.1:
