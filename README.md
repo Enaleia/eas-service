@@ -14,6 +14,7 @@ You can configure environment variables for the service by creating a `.env` fil
 
 - `PORT`: The port on which the service will run.
 - `PRIVATE_KEY`: The signer (gas payer) private key.
+- `LOOT_BOX_PK`: The loot box containing funds for the wallets.
 - `OP_PROVIDER`: The RPC URL for the Optimism network.
 - `SCHEMA_UID`: The schema UID for the Optimism network.
 
