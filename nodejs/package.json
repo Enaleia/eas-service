@@ -1,0 +1,23 @@
+{
+  "name": "eas-service-lambda",
+  "version": "0.0.1",
+  "description": "Simple EAS service for AWS Lambda",
+  "homepage": "https://github.com/Enaleia/eas-service",
+  "author": "Enaleia",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {},
+  "dependencies": {
+    "eas-lib": "^0.1.12",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=20.18.0",
+    "yarn": "1.22.22"
+  },
+  "resolutions": {
+    "hardhat": "file:./null",
+    "solc": "file:./null"
+  }
+}
