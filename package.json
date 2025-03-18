@@ -9,26 +9,26 @@
   "scripts": {
     "lint": "eslint",
     "test": "mocha --recursive 'src/**/__tests__/*.js'",
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "layer": "zip -rq layer.zip nodejs -x \"nodejs/package.json\" \"nodejs/yarn.lock\"",
+    "deploy": "cd lambda; zip -r ../deploy.zip . -x \"package.json\" \"yarn.lock\""
   },
   "dependencies": {
     "body-parser": "^1.20.2",
-    "eas-lib": "^0.1.11",
-    "express": "^4.19.2",
-    "lodash-es": "^4.17.21",
-    "moment": "^2.30.1",
-    "yargs": "^17.7.2"
+    "dotenv": "^16.4.5",
+    "eas-lib": "^0.1.12",
+    "express": "^4.19.2"
   },
   "devDependencies": {
-    "chai": "^5.1.0",
-    "dotenv": "^16.4.5",
-    "eslint": "^9.1.1",
-    "eslint-config-prettier": "^9.1.0",
-    "mocha": "^10.4.0",
-    "prettier": "^3.2.5"
+    "eslint": "^9.12.0",
+    "prettier": "^3.3.3"
   },
   "engines": {
     "node": ">=20.18.0",
     "yarn": "1.22.22"
+  },
+  "resolutions": {
+    "hardhat": "file:./src/null",
+    "solc": "file:./src/null"
   }
 }
