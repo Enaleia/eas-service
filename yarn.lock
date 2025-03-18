@@ -538,10 +538,10 @@ dunder-proto@^1.0.1:
     es-errors "^1.3.0"
     gopd "^1.2.0"
 
-eas-lib@^0.1.12:
-  version "0.1.12"
-  resolved "https://registry.yarnpkg.com/eas-lib/-/eas-lib-0.1.12.tgz#12f0814662a62e69919eff627ef463642bb82f46"
-  integrity sha512-YI1G1iO0t/Q+jLXH8tA0bUmz08tmNP1c/5RgNQq3ElWHtxiNgOa3AaWgRK2lBENnIqxSb1Y7feoTtLHp8zUcaw==
+eas-lib@^0.1.13:
+  version "0.1.13"
+  resolved "https://registry.yarnpkg.com/eas-lib/-/eas-lib-0.1.13.tgz#1c0a68b561989553555b53a8eec25a47f0cbee9f"
+  integrity sha512-UYtMcnpKRHlsmFJdLuE+5RiV9MG9aVnOFprBi/7rG5+M1ZlsW7CTJc6jYocpzFbiXEmf/u2g6Q5wy4djfJrWXA==
   dependencies:
     "@ethereum-attestation-service/eas-sdk" "^2.7.0"
     bip39 "^3.1.0"
@@ -875,7 +875,7 @@ gopd@^1.2.0:
   resolved "https://registry.yarnpkg.com/gopd/-/gopd-1.2.0.tgz#89f56b8217bdbc8802bd299df6d7f1081d7e51a1"
   integrity sha512-ZUKRh6/kUFoAiTAtTYPZJ3hw9wNxx+BIBOijnlG9PnrJsCcSjs1wyyD6vJpaYtgnzDrKYRSqf3OO6Rfa93xsRg==
 
-hardhat@2.22.4, "hardhat@file:./null":
+hardhat@2.22.4, "hardhat@file:./src/null":
   version "0.0.0"
 
 has-flag@^4.0.0:
@@ -1335,7 +1335,7 @@ side-channel@^1.0.6:
     side-channel-map "^1.0.1"
     side-channel-weakmap "^1.0.2"
 
-"solc@file:./null":
+"solc@file:./src/null":
   version "0.0.0"
 
 statuses@2.0.1:
