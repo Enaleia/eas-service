@@ -1,6 +1,6 @@
 # EAS Service
 
-## Running the service
+## Running the standalone service
 
 To run the service listening at a specific port (e.g. 4000), do:
 
@@ -16,6 +16,7 @@ You can configure environment variables for the service by creating a `.env` fil
 - `PRIVATE_KEY`: The signer (gas payer) private key.
 - `LOOT_BOX_PK`: The loot box containing funds for the wallets.
 - `OP_PROVIDER`: The RPC URL for the Optimism network.
+- `SCHEMA`: The definiton of the attestation schema.
 - `SCHEMA_UID`: The schema UID for the Optimism network.
 
 ## Using the service
@@ -37,3 +38,9 @@ http://localhost:3000/attest
 ```
 curl http://localhost:3000/ping
 ```
+
+## Deploying an AWS lambda.
+
+Use the script `deploy` to package a ZIP file for the deployment of AWS lambda function.
+
+Use the script `layer` to a package a ZIP file with the dependencies needed to run the lambda function.
