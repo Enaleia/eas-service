@@ -87,7 +87,7 @@ async function fund_address({ address }) {
   const providerUrl = process.env.OP_PROVIDER
   const lootBoxPk = process.env.LOOT_BOX_PK
   const addressMin = parseFloat(process.env.ADDRESS_MIN)
-  const amount = parseFloat(process.env.FUNDING_AMOUNT)
+  const amount = process.env.FUNDING_AMOUNT
 
   const eas = new EAS(providerUrl, lootBoxPk)
 
