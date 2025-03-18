@@ -19,17 +19,12 @@ function setupServer() {
     process.exit(1)
   }
 
-  if (!fs.existsSync('.schema')) {
-    console.error('Missing schema file')
-    process.exit(1)
-  }
-
   // The port the server will listen on.
   const port = process.argv[2] || process.env.PORT || 3000
 
   const providerUrl = process.env.OP_PROVIDER
   const privateKey = process.env.PRIVATE_KEY
-  const schema = readSchemaFromFile('.schema')
+  const schema = process.env.SCHEMA
   const schemaUID = process.env.SCHEMA_UID
 
   // Create a new Express server and configure it.
