@@ -69,11 +69,12 @@ async function get_balance({ address }) {
   return res(200)({ balance })
 }
 
-async function fund_address({ address, amount }) {
+async function fund_address({ address }) {
   const missingVars = []
   if (!process.env.OP_PROVIDER) missingVars.push('OP_PROVIDER')
   if (!process.env.LOOT_BOX_PK) missingVars.push('LOOT_BOX_PK')
   if (!process.env.ADDRESS_MIN) missingVars.push('ADDRESS_MIN')
+  if (!process.env.FUNDING_AMOUNT) missingVars.push('FUNDING_AMOUNT')
   if (missingVars.length > 0)
     return res(500)({
       message: `Missing required environment variables: ${missingVars.join(', ')}`,
@@ -82,13 +83,11 @@ async function fund_address({ address, amount }) {
   if (!address) {
     return res(400)({ error: 'Missing address parameter' })
   }
-  if (!amount) {
-    return res(400)({ error: 'Missing amount parameter' })
-  }
 
   const providerUrl = process.env.OP_PROVIDER
   const lootBoxPk = process.env.LOOT_BOX_PK
   const addressMin = parseFloat(process.env.ADDRESS_MIN)
+  const amount = parseFloat(process.env.FUNDING_AMOUNT)
 
   const eas = new EAS(providerUrl, lootBoxPk)
 
